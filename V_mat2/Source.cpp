@@ -1,19 +1,19 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <cmath>
 
-//Нелинейное уровнение по 12 варианту(1), под пунтком а
+//РќРµР»РёРЅРµР№РЅРѕРµ СѓСЂРѕРІРЅРµРЅРёРµ РїРѕ 12 РІР°СЂРёР°РЅС‚Сѓ(1), РїРѕРґ РїСѓРЅС‚РєРѕРј Р°
 double Fun(double);
-//Производная первого порядка 
+//РџСЂРѕРёР·РІРѕРґРЅР°СЏ РїРµСЂРІРѕРіРѕ РїРѕСЂСЏРґРєР° 
 double FunDif1(double);
-//Производная второго порядка 
+//РџСЂРѕРёР·РІРѕРґРЅР°СЏ РІС‚РѕСЂРѕРіРѕ РїРѕСЂСЏРґРєР° 
 double FunDif2(double);
-//Метод Ньютона
+//РњРµС‚РѕРґ РќСЊСЋС‚РѕРЅР°
 int MetNewton(double, double);
-//Метод Дихотомии
+//РњРµС‚РѕРґ Р”РёС…РѕС‚РѕРјРёРё
 void MetDihot(double, double, double);
-//Метод Хорд
+//РњРµС‚РѕРґ РҐРѕСЂРґ
 int MetHord(double, double, double);
-//Ввод а, b и дельты
+//Р’РІРѕРґ Р°, b Рё РґРµР»СЊС‚С‹
 void Input(double*, double*, double*, double*);
 
 int main()
@@ -46,14 +46,14 @@ int MetNewton(double del, double X0)
 {
 	double Fx, F1, F2, Newton, X1;
 
-	std::cout << std::endl << "Метод Ньютона " << std::endl;
+	std::cout << std::endl << "РњРµС‚РѕРґ РќСЊСЋС‚РѕРЅР° " << std::endl;
 
 	Fx = Fun(X0);
 	F1 = FunDif1(X0);
 	F2 = FunDif2(X0);
 	if (abs(Fx * F2) / pow(F1, 2) >= 1)
 	{
-		std::cout << "ОШИБКА!!!" << std::endl;
+		std::cout << "РћРЁРР‘РљРђ!!!" << std::endl;
 		system("pause");
 		return EXIT_FAILURE;
 	}
@@ -68,12 +68,12 @@ int MetNewton(double del, double X0)
 		}
 	}
 	Newton = X1;
-	std::cout << "Результат по решению методом Ньютона = " << Newton << std::endl;
+	std::cout << "Р РµР·СѓР»СЊС‚Р°С‚ РїРѕ СЂРµС€РµРЅРёСЋ РјРµС‚РѕРґРѕРј РќСЊСЋС‚РѕРЅР° = " << Newton << std::endl;
 }
 
 int MetHord(double a, double b, double del)
 {
-	std::cout << std::endl << "Метод Хорд " << std::endl;
+	std::cout << std::endl << "РњРµС‚РѕРґ РҐРѕСЂРґ " << std::endl;
 
 	double Fa, Fb, Fc, c = 0, Horda;
 	double dx;
@@ -81,7 +81,7 @@ int MetHord(double a, double b, double del)
 	Fb = Fun(b);
 	if (Fa * Fb > 0)
 	{
-		std::cout << "ОШИБКА!!!" << std::endl;
+		std::cout << "РћРЁРР‘РљРђ!!!" << std::endl;
 		system("pause");
 		return EXIT_FAILURE;
 	}
@@ -103,14 +103,14 @@ int MetHord(double a, double b, double del)
 		}
 	dx = (b - a) / 2;
 	Horda = c;
-	std::cout << "Результат по решению методом Хорд = " << Horda << std::endl;
+	std::cout << "Р РµР·СѓР»СЊС‚Р°С‚ РїРѕ СЂРµС€РµРЅРёСЋ РјРµС‚РѕРґРѕРј РҐРѕСЂРґ = " << Horda << std::endl;
 	std::cout << "F(c) = " << Fun(c) << std::endl;
 	std::cout << "dx = " << dx << std::endl;
 }
 
 void MetDihot(double a, double b, double del)
 {
-	std::cout << std::endl << "Метод Дихотомии " << std::endl;
+	std::cout << std::endl << "РњРµС‚РѕРґ Р”РёС…РѕС‚РѕРјРёРё " << std::endl;
 
 	double c, dx, Dihot;
 	while (abs(b - a) > del)
@@ -125,19 +125,19 @@ void MetDihot(double a, double b, double del)
 	c = (a + b) / 2;
 	dx = (b - a) / 2;
 	Dihot = c;
-	std::cout << "Результат по решению методом Дихотомии = " << Dihot << std::endl;
+	std::cout << "Р РµР·СѓР»СЊС‚Р°С‚ РїРѕ СЂРµС€РµРЅРёСЋ РјРµС‚РѕРґРѕРј Р”РёС…РѕС‚РѕРјРёРё = " << Dihot << std::endl;
 	std::cout << "F(c) = " << Fun(c) << std::endl;
 	std::cout << "dx = " << dx << std::endl;
 }
 
 void Input(double* a, double* b, double* delta, double* X0)
 {
-	std::cout << "а = ";
+	std::cout << "Р° = ";
 	std::cin >> *a;
 	std::cout << "b = ";
 	std::cin >> *b;
-	std::cout << "delta(точность) = ";
+	std::cout << "delta(С‚РѕС‡РЅРѕСЃС‚СЊ) = ";
 	std::cin >> *delta;
-	std::cout << "X0(нулевое приближение) = ";
+	std::cout << "X0(РЅСѓР»РµРІРѕРµ РїСЂРёР±Р»РёР¶РµРЅРёРµ) = ";
 	std::cin >> *X0;
 }
